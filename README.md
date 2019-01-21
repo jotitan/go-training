@@ -1,5 +1,20 @@
 # Projet de training fournissant des exemples Go à coder
 
+## Pré-requis
+
+Pas grand chose, mais il le faut quand même : 
+* Installer [Go](https://golang.org/dl/)
+* Avoir un IDE : 
+    * [Visual studio code](https://code.visualstudio.com/Download) avec le [plugin associé](https://code.visualstudio.com/docs/languages/go)
+    * Intellij ultimate avec le [plugin associé](https://plugins.jetbrains.com/plugin/9568-go)
+    * [JetBrains Goland](https://www.jetbrains.com/go/) pour les chanceux
+* Configurer son environnement : 
+    * GOPATH pointe sur les répertoires où se trouvent les sources : 
+        * Les sources chargées sur internet (comme un repo maven)
+        * Le répertoire ou se trouve le projet
+        * Les répertoires sont séparés par : sous linux et par ; sous windows
+    * GOPATH dans son IDE : le même, pour qu'il puisse aider à l'autocompletion
+
 ## Organisation
 
 Pour chaque exercice, deux packages package : 

@@ -4,10 +4,12 @@ import (
 	"context"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func stopServer(w http.ResponseWriter, r *http.Request) {
-	go localServer.Shutdown(context.Background())
+	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
+	localServer.Shutdown(ctx)
 }
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
