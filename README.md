@@ -40,3 +40,5 @@ Pour chaque exercice, deux packages package :
     * _go run mon_fichier.go_
 * Lancer les tests dans un package
     * go test
+* Lancer un watcher ginkgo pour relancer les tests quand le code change
+    * ginkgo watch _folder_

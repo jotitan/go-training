@@ -49,7 +49,7 @@ var _ = Describe("Ex3", func() {
 					select {
 					case list := <-outputResults:
 						Expect(10).To(Equal(len(list)))
-					case <- time.NewTimer(time.Duration(2)*time.Second).C :
+					case <-time.NewTimer(time.Duration(2) * time.Second).C:
 						Fail("Timeout before getting results")
 					}
 				}
