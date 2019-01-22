@@ -15,7 +15,7 @@ var _ = Describe("Ex2", func() {
 				Expect(movie.GetTitle()).To(Equal("Title 1"))
 			})
 			It("Should be jsonable", func() {
-				Expect(movie.ToJson()).To(Equal("{\"Title\":\"Title 1\",\"Year\":2010,\"Actors\":[]}"))
+				Expect(movie.ToJSON()).To(Equal("{\"Title\":\"Title 1\",\"Year\":2010,\"Actors\":[]}"))
 			})
 		})
 		Context("I add actors", func() {
@@ -63,6 +63,13 @@ var _ = Describe("Ex2", func() {
 				Expect("Live or let Die").To(Equal(movies2[2].GetTitle()))
 			})
 		})
+		// TODO : uncomment when creating JSONable interface
+		/*Context("I used interface to generate a nice json of movies", func() {
+			movies := createMoviesList()
+			It("Get a json represntation of movies", func() {
+				Ω(len(getJSON(movies))).Should(BeNumerically(">", 100))
+			})
+		})*/
 	})
 })
 
@@ -77,4 +84,8 @@ func createMoviesList() Movies {
 	movies.AddMovie(NewMovie("Octopussy", 1983))
 	movies.AddMovie(NewMovie("Casino Royale", 2006))
 	return movies
+}
+
+func getJSON(obj JSONable) string {
+	return obj.ToJSON()
 }

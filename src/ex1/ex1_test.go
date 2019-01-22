@@ -24,8 +24,8 @@ var _ = Describe("Ex1", func() {
 			It("Should return 4 when I ask with -12 and 16", func() {
 				Expect(AddInts(-12, 16)).To(Equal(4))
 			})
-			It("Should return 5 when I ask with 2 and 3", func() {
-				Expect(AddIntsDifferents(int64(2), int32(3))).To(Equal(5))
+			It("Should return 26 when I ask with 11 as int64 and 32 as int15", func() {
+				Expect(AddIntsDifferents(int64(11), int32(15))).To(Equal(26))
 			})
 		})
 	})

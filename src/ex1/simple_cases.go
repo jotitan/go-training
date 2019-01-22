@@ -1,13 +1,16 @@
 package ex1
 
+//HelloWorld classic function
 func HelloWorld() string {
 	return ""
 }
 
+//AddInts return sum of two int
 func AddInts(value1, value2 int) int {
 	return 0
 }
 
+//AddIntsDifferents return sum of two differents ints (64 and 32 bits)
 func AddIntsDifferents(value1 int64, value2 int32) int {
 	return 0
 }
@@ -22,6 +25,7 @@ func SubstringWithErrors(value string, left, right int) (string, error) {
 	return "", nil
 }
 
+// ExtractNumbersFromString return the numbers existing in the list
 func ExtractNumbersFromString(value string) []int {
 	return []int{}
 }
