@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//stopServer stop the running server.
 func stopServer(w http.ResponseWriter, r *http.Request) {
 	go localServer.Shutdown(context.Background())
 }
