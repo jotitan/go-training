@@ -32,6 +32,14 @@ Pour chaque exercice, vous devez :
 * Corriger l'implémentation, quasiment vide par défaut jusqu'à ce que les tests soient verts
 * Si vous avez besoin d'aide, il y a un fichier qui fonctionne (le _results), mais le mieux est de ne pas regarder
 
+Si vous voulez simplifier la gestion des tests en évitant que tous tournent à chaque fois : 
+* Initialiser le mode de test avec la commande suivante (lancer depuis src) : 
+    * go run launchers\next_case.go init
+* Lorsque vous lancez les tests, il faut utiliser ginkgo avec un petit hook (en étant dans un répertoire, ex1 par exemple) : 
+    * ginkgo --afterSuiteHook="go run ../launchers/next_case.go (ginkgo-suite-passed) (ginkgo-suite-name)"
+* A tout moment vous pouvez revenir au cas normal en lancant : 
+    * go run launchers\next_case.go reset
+
 ### Arboresence
 
 Pour chaque exercice, il y a deux packages : 
@@ -44,12 +52,12 @@ Pour chaque exercice, il y a deux packages :
 ## Lancement des tests
 
 * Pour lancer les tests, dans un terminal, mettez vous dans le package (par exemple ex1) et faites : 
-    * go test => lance les tests
-    * ginkgo watch => relance les tests à chaque modification de code
+    * _go test_ ou _ginkgo test_
+    * _ginkgo watch_ => relance les tests à chaque modification de code
 * Si vous souhaitez modifier le test pour utiliser la version réponse : 
-    * Modifier l'import en ajoutant "_results" au nom du package pour passer sur la solution
+    * Modifier l'import du fichier*_test.go en ajoutant "_results" au nom du package pour passer sur la solution
 
-## Rappel des commandes importantes
+## Rappel des commandes utiles
 
 * Construire un executable : 
     * Un fichier avec une méthode main : _go build mon_fichier.go_
