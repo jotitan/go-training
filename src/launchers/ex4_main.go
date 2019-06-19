@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	RunServer()
+	RunServer(9006)
 }

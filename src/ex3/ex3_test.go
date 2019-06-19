@@ -95,7 +95,7 @@ var _ = Describe("Ex3", func() {
 	})
 
 	Describe("Use channel to compute sum as fast as possible", func() {
-		Context("Run 10000 cycles", func() {
+		Context("Run 10 cycles (increase number after)", func() {
 			sum, goodSum := ComputeSum(10)
 			It(fmt.Sprintf("Must get %d", goodSum), func() {
 				Expect(sum).To(Equal(goodSum))
