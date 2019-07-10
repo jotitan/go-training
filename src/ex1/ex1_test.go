@@ -62,16 +62,28 @@ var _ = Describe("Ex1", func() {
 			})
 		})
 		Context("Extract numbers from string", func() {
-			It("Sould found 0 values in 'Votre manque de foi me consterne'", func() {
+			It("Should have found 0 values in 'Votre manque de foi me consterne'", func() {
 				Expect(ExtractNumbersFromString("Votre manque de foi me consterne")).To(Equal([]int{}))
 			})
-			It("Sould found 3 values in 'Les valeurs 132 25, 602'", func() {
+			It("Should have found 3 values in 'Les valeurs 132 25, 602'", func() {
 				Expect(ExtractNumbersFromString("Les valeurs 132 25, 602")).To(Equal([]int{132, 25, 602}))
+			})
+		})
+		Context("Get last values (end) from string", func() {
+			It("Should have returned 'consterne'", func() {
+				value, err := GetEndList([]string{"Votre", "manque", "de", "foi", "me", "consterne"}, 3)
+				Ω(err).ShouldNot(HaveOccurred())
+				Ω(value).Should(Equal([]string{"foi", "me", "consterne"}))
+			})
+			It("Should have thrown error ('from' is bigger than string size) and string should be empty", func() {
+				value, err := GetEndList([]string{"Votre", "manque", "de", "foi", "me", "consterne"}, 999)
+				Ω(err).Should(HaveOccurred())
+				Ω(value).Should(Equal(make([]string, 0)))
 			})
 		})
 	})
 
-	Describe("Test swith types", func() {
+	Describe("Test switch types", func() {
 		Context("Count types for ('val1',3,5,3.5,'val2',135,0.4)", func() {
 			nbNumber, nbString, nbUnknown := CountTypes("val1", 3, 5, 3.5, "val2", 135, 0.4, make([]string, 0))
 			It("Should find 2 strings", func() {
