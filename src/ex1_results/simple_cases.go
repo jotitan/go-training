@@ -42,17 +42,21 @@ func SubstringWithErrors(value string, left, right int) (string, error) {
 }
 
 func ExtractNumbersFromString(value string) []int {
-	if reg, err := regexp.Compile("([0-9]+)"); err == nil {
-		founded := reg.FindAllStringSubmatch(value, -1)
-		results := make([]int, 0, len(founded))
-		for _, found := range founded {
-			if value, err := strconv.ParseInt(found[1], 10, 32); err == nil {
-				results = append(results, int(value))
-			}
-		}
-		return results
+
+	reg, err := regexp.Compile("([0-9]+)")
+
+	if err != nil {
+		return []int{}
 	}
-	return []int{}
+
+	founded := reg.FindAllStringSubmatch(value, -1)
+	results := make([]int, 0, len(founded))
+	for _, found := range founded {
+		if value, err := strconv.ParseInt(found[1], 10, 32); err == nil {
+			results = append(results, int(value))
+		}
+	}
+	return results
 }
 
 // CountTypes count number of numbers, string and others
