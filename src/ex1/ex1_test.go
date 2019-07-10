@@ -78,7 +78,12 @@ var _ = Describe("Ex1", func() {
 			It("Should have thrown error ('from' is bigger than string size) and string should be empty", func() {
 				value, err := GetEndList([]string{"Votre", "manque", "de", "foi", "me", "consterne"}, 999)
 				Ω(err).Should(HaveOccurred())
-				Ω(value).Should(Equal(make([]string, 0)))
+				Ω(value).Should(Equal([]string{}))
+			})
+			It("Should have thrown error ('from' is lower than zero)", func() {
+				value, err := GetEndList([]string{"Votre", "manque", "de", "foi", "me", "consterne"}, -2)
+				Ω(err).Should(HaveOccurred())
+				Ω(value).Should(Equal([]string{}))
 			})
 		})
 	})

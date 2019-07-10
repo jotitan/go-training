@@ -98,7 +98,11 @@ func CreateSet(values ...interface{}) map[interface{}]struct{} {
 //GetEndList return the end of the list
 func GetEndList(list []string, from int) ([]string, error) {
 	if from > len(list) {
-		return []string{}, errors.New("From must be leather than length list")
+		return []string{}, errors.New("From must be lower than list length")
+	}
+
+	if from < 0 {
+		return []string{}, errors.New("From must be greater or equal to zero")
 	}
 	return list[from:], nil
 }
