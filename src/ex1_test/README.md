@@ -1,6 +1,6 @@
 ## Premier exercice
 
-Il faut implémenter les méthodes qui se trouvent dans le fichier simple_cases.go : 
+Il faut implémenter les méthodes qui se trouvent dans le fichier ex1/simple_cases.go : 
 * HelloWorld qui porte bien son nom
 * AddInts qui additionnent deux entiers
 * AddIntsDifferents qui additionnent un int64 et un int32

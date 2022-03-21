@@ -2,15 +2,15 @@ package ex4_test
 
 import (
 	"io/ioutil"
+	"math"
 	"net/http"
 	"strconv"
 	"sync"
 	"time"
 
+	. "github.com/jotitan/go-training/ex4_results"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	. "ex4"
 )
 
 var _ = Describe("Ex4", func() {
@@ -52,15 +52,15 @@ var _ = Describe("Ex4", func() {
 				_, status := CallURL("http://localhost:9007/getTime")
 				end := time.Now()
 				Expect(200).To(Equal(status))
-				Expect(end.Sub(begin).Seconds()).To(BeNumerically(">=",1))
+				Expect(end.Sub(begin).Seconds()).To(BeNumerically(">=", 1))
 			})
 			It("I ask 4 times getTime and wait more than 2 seconds from beginning", func() {
 				begin := time.Now()
 				nb := 4
 				waiter := sync.WaitGroup{}
 				waiter.Add(nb)
-				for i := 0 ; i < nb ; i++ {
-					go func(){
+				for i := 0; i < nb; i++ {
+					go func() {
 						CallURL("http://localhost:9007/getTime")
 						waiter.Done()
 					}()
@@ -73,16 +73,16 @@ var _ = Describe("Ex4", func() {
 		Context("Call get time with limit many times and get 404", func() {
 			It("I ask 4 times quikly and get at least one 404", func() {
 				nb := 4
-				response := make(chan int,nb)
-				for i := 0 ; i < nb ; i++ {
-					go func(){
+				response := make(chan int, nb)
+				for i := 0; i < nb; i++ {
+					go func() {
 						_, status := CallURL("http://localhost:9007/getTimeWithLimit")
 						response <- status
 					}()
 				}
 				sum := 0
-				for i := 0 ; i < nb ; i++ {
-					sum+=<-response
+				for i := 0; i < nb; i++ {
+					sum += <-response
 				}
 				Expect(800).NotTo(Equal(sum))
 			})
@@ -91,33 +91,34 @@ var _ = Describe("Ex4", func() {
 			It("I ask price for one product, I get correct price and result between 200 and 250 ms", func() {
 				begin := time.Now()
 				data, status := CallURL("http://localhost:9007/computeBasket?products=1&quantities=1")
-				requestTime := time.Now().Sub(begin).Nanoseconds()/1000000
+				requestTime := time.Now().Sub(begin).Nanoseconds() / 1000000
 				Expect(200).To(Equal(status))
-				Expect(requestTime).To(And(BeNumerically(">=",200),BeNumerically("<",250)))
+				Expect(requestTime).To(And(BeNumerically(">=", 200), BeNumerically("<", 250)))
 				Expect(float32(1.5)).To(Equal(parseFloat(data)))
 			})
 			It("I ask price for many products, I get correct price and result between 200 and 250 ms", func() {
 				begin := time.Now()
 				data, status := CallURL("http://localhost:9007/computeBasket?products=1,6,2,7,9&quantities=2,3,5,4,1")
-				requestTime := time.Now().Sub(begin).Nanoseconds()/1000000
+				requestTime := time.Now().Sub(begin).Nanoseconds() / 1000000
 				Expect(200).To(Equal(status))
-				Expect(requestTime).To(And(BeNumerically(">=",200),BeNumerically("<",250)))
+				Expect(requestTime).To(And(BeNumerically(">=", 200), BeNumerically("<", 250)))
 				Expect(float32(94.4)).To(Equal(parseFloat(data)))
 			})
 			It("I ask price for all products, I get correct price and result between 200 and 250 ms", func() {
 				begin := time.Now()
 				data, status := CallURL("http://localhost:9007/computeBasket?products=1,2,3,4,5,6,7,8,9,10&quantities=1,1,1,1,1,1,1,1,1,1")
-				requestTime := time.Now().Sub(begin).Nanoseconds()/1000000
+				requestTime := time.Now().Sub(begin).Nanoseconds() / 1000000
 				Expect(200).To(Equal(status))
-				Expect(requestTime).To(And(BeNumerically(">=",200),BeNumerically("<",250)))
-				Expect(float32(45.6)).To(Equal(parseFloat(data)))
+				Expect(requestTime).To(And(BeNumerically(">=", 200), BeNumerically("<", 250)))
+
+				Expect(math.Round(45.6)).To(Equal(math.Round(float64(parseFloat(data)))))
 			})
 		})
 	})
 })
 
-func parseFloat(value string)float32{
-	if value,err := strconv.ParseFloat(value,32) ; err == nil {
+func parseFloat(value string) float32 {
+	if value, err := strconv.ParseFloat(value, 32); err == nil {
 		return float32(value)
 	}
 	return 0

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ex3_results"
 	"fmt"
+	"github.com/jotitan/go-training/ex3_results"
 	"time"
 )
 

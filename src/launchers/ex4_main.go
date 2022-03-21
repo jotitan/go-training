@@ -1,7 +1,7 @@
 package main
 
 import (
-	. "ex4_results"
+	. "github.com/jotitan/go-training/ex4_results"
 )
 
 func main() {

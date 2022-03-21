@@ -1,10 +1,9 @@
 package ex1_test
 
 import (
+	. "github.com/jotitan/go-training/ex1_results"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	. "ex1_results"
 )
 
 var _ = Describe("Ex1", func() {

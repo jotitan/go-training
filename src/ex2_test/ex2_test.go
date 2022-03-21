@@ -1,7 +1,7 @@
 package ex2_test
 
 import (
-	. "ex2"
+	. "github.com/jotitan/go-training/ex2_results"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
