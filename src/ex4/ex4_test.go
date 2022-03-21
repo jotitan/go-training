@@ -1,6 +1,7 @@
 package ex4_test
 
 import (
+	. "github.com/jotitan/go-training/ex4"
 	"io/ioutil"
 	"math"
 	"net/http"
@@ -8,7 +9,6 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/jotitan/go-training/ex4_results"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

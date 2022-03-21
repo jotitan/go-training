@@ -2,10 +2,10 @@ package ex3_test
 
 import (
 	"fmt"
+	. "github.com/jotitan/go-training/ex3"
 	"sync"
 	"time"
 
-	. "github.com/jotitan/go-training/ex3_results"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
