@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/jotitan/go-training/ex4_results"
+	. "github.com/jotitan/go-training/ex4"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

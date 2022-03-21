@@ -1,7 +1,7 @@
 package ex1_test
 
 import (
-	. "github.com/jotitan/go-training/ex1_results"
+	. "github.com/jotitan/go-training/ex1"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

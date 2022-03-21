@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/jotitan/go-training/ex3_results"
+	. "github.com/jotitan/go-training/ex3"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
